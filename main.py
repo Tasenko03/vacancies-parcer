@@ -1,7 +1,7 @@
-from config import ConfigD
-from exeptions import IncorrectSeedURLError, IncorrectHeadersError, \
+from extra.config import ConfigD
+from extra.exeptions import IncorrectSeedURLError, IncorrectHeadersError, \
     IncorrectEncodingError, IncorrectTimeoutError, IncorrectVerifyError
-from get_cities import get_cities
+from extra.get_cities import get_cities
 
 import sqlite3
 from bs4 import BeautifulSoup
