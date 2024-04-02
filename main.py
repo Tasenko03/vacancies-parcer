@@ -146,26 +146,26 @@ class HTMLParser:
         self.cities = []
         self.work_schedule = []
 
-    def _get_company_name(self, article_soup: BeautifulSoup) -> None:
+    def _get_company_name(self, soup: BeautifulSoup) -> None:
         """
         Finds company name
         """
-        company_names = article_soup.find_all("div", {"class": "vacancy-card__company-title"})
+        company_names = soup.find_all("div", {"class": "vacancy-card__company-title"})
         self.org_names.extend([name.text for name in company_names])
         # print(self.org_names)
 
-    def _get_vacancy_name(self, article_soup: BeautifulSoup) -> None:
+    def _get_vacancy_name(self, soup: BeautifulSoup) -> None:
         """
         Finds vacancy name
         """
-        vacancy = article_soup.find_all("div", {"class": "vacancy-card__title"})
+        vacancy = soup.find_all("div", {"class": "vacancy-card__title"})
         self.vacancy_names.extend([name.text for name in vacancy])
 
-    def _get_city_and_work_schedule(self, article_soup: BeautifulSoup) -> None:
+    def _get_city_and_work_schedule(self, soup: BeautifulSoup) -> None:
         """
         Finds city name and work schedule
         """
-        self.meta = article_soup.find_all("div", {"class": "vacancy-card__meta"})
+        self.meta = soup.find_all("div", {"class": "vacancy-card__meta"})
         for elem in self.meta:
             cities = []
             extra = []
@@ -178,11 +178,11 @@ class HTMLParser:
             self.cities.append(", ".join(cities) if cities else "no info")
             self.work_schedule.append(", ".join(extra) if extra else "no info")
 
-    def _get_requirements_general_name_experience(self, article_soup: BeautifulSoup) -> None:
+    def _get_requirements_general_name_experience(self, soup: BeautifulSoup) -> None:
         """
         Finds requirements, general name and experience
         """
-        requirements = article_soup.find_all("div", {"class": "vacancy-card__skills"})
+        requirements = soup.find_all("div", {"class": "vacancy-card__skills"})
         for elem in requirements:
             information = elem.text.split("•")
             self.requirements.append(", ".join(information[1:]))
