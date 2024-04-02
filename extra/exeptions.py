@@ -3,19 +3,6 @@ class IncorrectSeedURLError(TypeError):
     seed URL does not match standard pattern
     """
 
-
-#class NumberOfArticlesOutOfRangeError(Exception):
-#    """
-#    total number of articles is out of range from 1 to 150
-#    """
-
-
-#class IncorrectNumberOfArticlesError(Exception):
-#    """
-#    total number of articles to parse is not integer
-#    """
-
-
 class IncorrectHeadersError(Exception):
     """
     headers are not in a form of dictionary
